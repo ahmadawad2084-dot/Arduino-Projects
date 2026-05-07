@@ -1,63 +1,90 @@
-4 bit LCD1602 (No I2C)
+# 4-bit LCD1602 (No I2C)
 
-What is it ---> This element is a 16 character by 2 row character display. Looks like the screen of general calculators.
+## What is it?
+A 16 character by 2 row character display. Looks like the screen of general calculators.  
+This specific LCD is a 16 x 2 (1602).
 
-This specific LCD is a 16 x 2 (1602)  
-                       --   _  -- _
+Can be wired to Arduino Uno to display characters like a calculator would.  
+D4–D7 used for 4-bit mode — only 4 pins needed, frees up 4 Arduino pins, compatible with the `LiquidCrystal` library.
 
-Note: Can be Wired to Arduino Uno to display characters like a calculator would.
-Note: D4 until D7 used because im making it a 4 bit mode. meaning only 4 pins needed, frees up 4 arduino pins for other things, compatible with "LiquidCrystal" library thats used to run LCD in 4 bit mode
+---
 
+## How to Wire
 
-How to wire:      LCD|Pin|   Arduino Pin                                                                              | What does it do?
-                  ----------------------------------------------------------------------------------------------------------------------------------
-                  LCD VSS  → GND                                                                                      | Ground
-                  LCD VDD  → 5V                                                                                       | Power Source
-                  LCD V0   → Middle pin of potentiometer (for contrast)  ---> Resistor 1 into GND, Resistor 2 into 5V | Controls Contrast
-                  LCD RS   → Arduino pin 12                                                                           | Register Select (RS) -> Tells LCD if you are sending command or data
-                  LCD RW   → GND                                                                                      | Read/Write, tied to ground
-                  LCD E    → Arduino pin 11                                                                           | Triggers LCD to read data
-                  LCD D4   → Arduino pin 5                                                                            | Actual Character Data
-                  LCD D5   → Arduino pin 4                                                                            | //      //      //
-                  LCD D6   → Arduino pin 3                                                                            | //      //      //
-                  LCD D7   → Arduino pin 2                                                                            | //      //      //
-                  LCD A    → 5V (backlight)                                                                           | Power source for back light
-                  LCD K    → GND (backlight)                                                                          | Ground for back light
+```
+LCD Pin  → Arduino Pin                                          | What does it do?
+------------------------------------------------------------------------------------------------------------------------------------
+LCD VSS  → GND                                                  | Ground
+LCD VDD  → 5V                                                   | Power Source
+LCD V0   → Middle pin of potentiometer                          | Controls Contrast (Resistor 1 → GND, Resistor 2 → 5V)
+LCD RS   → Arduino pin 12                                       | Register Select — tells LCD if sending command or data
+LCD RW   → GND                                                  | Read/Write, tied to ground
+LCD E    → Arduino pin 11                                       | Triggers LCD to read data
+LCD D4   → Arduino pin 5                                        | Actual Character Data
+LCD D5   → Arduino pin 4                                        | Actual Character Data
+LCD D6   → Arduino pin 3                                        | Actual Character Data
+LCD D7   → Arduino pin 2                                        | Actual Character Data
+LCD A    → 5V                                                   | Power source for backlight
+LCD K    → GND                                                  | Ground for backlight
+```
 
+### ⚠️ Wiring Warnings
+1. VDD → 5V, VSS → GND — swapping these will likely damage the LCD.
+2. A → 5V, K → GND — mixing these will burn out the backlight.
+3. RW must go to GND or the LCD behaves erratically.
 
-Wiring Warning: 
-1. LCD VDD goes to 5V, VSS goes to GND — swapping these two will likely damage the LCD.
-2. A must go to 5V, K to GND. Mixing these will burn out the backlight.
-3. If RW pin not to ground, LCD behaves irratically
+---
 
-General Coding Commands:
-lcd.clear();              // Clear the screen
-lcd.setCursor(col, row);  // Move cursor (0-indexed)
+## Setup — LiquidCrystal Object
+
+Must be declared **above** `void setup()`:
+
+```cpp
+//               (RS, E, D4, D5, D6, D7)
+LiquidCrystal lcd(12, 11,  5,  4,  3,  2);
+```
+
+---
+
+## General Coding Commands
+
+```cpp
+// In void setup():
+lcd.begin(16, 2);         // Start the LCD (like Serial.begin())
+
+// In void loop():
+lcd.clear();              // Clear the screen (slow — 2ms, causes flicker)
+lcd.setCursor(col, row);  // Move cursor — 0-indexed
 lcd.print("text");        // Print a string
 lcd.print(variable);      // Print a number or variable
 lcd.scrollDisplayLeft();  // Scroll text left
 lcd.blink();              // Blinking cursor
 lcd.noBlink();            // Stop blinking cursor
+```
 
-Note: lcd.setCursor(col,row); is a much better way to update the character instead of using the lcd.clear(); because the clear command takes two milliseconds and is slow. results in flickering.
-Note: lcd.setCursor(col,row); is similar to (x,y) coordinates. whatever is printed with lcd.print(); after setting the cursor will print in the cursor's current location.
+> **Tip:** Prefer `lcd.setCursor()` over `lcd.clear()` when updating values.  
+> `lcd.clear()` takes 2ms and causes flickering. `setCursor` just moves the cursor and overwrites in place.
 
-                                                                                 -------16------- 
-      Example in the LCD1602, A is the position: lcd.setCursor(0,0) -->   row 1 [A               ]
-                                                                          row 2 [                ]
+---
 
-                                                 lcd.setCursor(5,0) -->   row 1 [     A          ]
-                                                                          row 2 [                ]
+## setCursor Visual Reference
 
+`lcd.setCursor(col, row)` works like (x, y) coordinates.  
+Whatever is printed after will appear at that position.
 
-                                                lcd.setCursor(15,1) -->   row 1 [                ]
-                                                                          row 2 [              A ]
+```
+                              -------16-------
+lcd.setCursor(0,0)  →  row 1 [A               ]
+                       row 2 [                ]
 
+lcd.setCursor(5,0)  →  row 1 [     A          ]
+                       row 2 [                ]
 
+lcd.setCursor(15,1) →  row 1 [                ]
+                       row 2 [               A]
+```
 
+---
 
-
-
-
-Simple Project Ideas To Fully Understand It:
-1. build a voltage reader circuit and let it print on the LCD
+## Simple Project Ideas
+1. Build a voltage reader circuit and display the reading on the LCD.
