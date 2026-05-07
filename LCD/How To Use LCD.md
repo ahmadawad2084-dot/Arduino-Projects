@@ -35,13 +35,15 @@ LCD K    → GND                                                  | Ground for b
 
 ---
 
-## Setup — LiquidCrystal Object
+## Setup — LiquidCrystal Object & Library
 
-Must be declared **above** `void setup()`:
+Both must be declared **above** `void setup()`:
 
 ```cpp
+#include <LiquidCrystal.h>
 //               (RS, E, D4, D5, D6, D7)
 LiquidCrystal lcd(12, 11,  5,  4,  3,  2);
+//object is lcd, set to get info and data from pins in () and its used from library LiquidCrystal
 ```
 
 ---
