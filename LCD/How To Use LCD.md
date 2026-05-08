@@ -45,8 +45,21 @@ Both must be declared **above** `void setup()`:
 LiquidCrystal lcd(12, 11,  5,  4,  3,  2);
 //object is lcd, set to get info and data from pins in () and its used from library LiquidCrystal
 ```
+## Setup — lcd.begin(); - Setting LCD Parameters 
 
----
+lcd.begin(); is a command used to define how large the screen is in terms of characters, Absolutely mandatory for the component to function. 
+It goes by the number of columns and rows.  
+
+Ex) LCD1602  --->   16 columns x 2 rows ---> lcd.begin(16, 2);
+
+This line must be declared **under** `void setup()`:
+
+```cpp
+void setup() {
+  lcd.begin(16, 2);
+}
+```
+
 
 ## General Coding Commands
 
@@ -83,7 +96,7 @@ lcd.setCursor(5,0)  →  row 1 [     A          ]
                        row 2 [                ]
 
 lcd.setCursor(15,1) →  row 1 [                ]
-                       row 2 [               A]
+                       row 2 [              A ]
 ```
 
 
