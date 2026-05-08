@@ -86,7 +86,5 @@ lcd.setCursor(15,1) →  row 1 [                ]
                        row 2 [               A]
 ```
 
----
 
-## Simple Project Ideas
-1. Build a voltage reader circuit and display the reading on the LCD.
+
