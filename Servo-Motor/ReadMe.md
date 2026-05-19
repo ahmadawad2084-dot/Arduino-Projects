@@ -53,8 +53,8 @@ myServo.attach(pin, min, max)     // Custom pulse widths (µs)
 
 
 // In void loop():
-myServo.write(angle)Move to angle (0–180°)
-myServo.writeMicroseconds(us)Move using raw pulse width (e.g. 1000–2000µs) for finer control
-myServo.read()Returns last written angle
-myServo.detach()Releases the pin (stops PWM signal)
+myServo.write(angle)                //Move to angle (0–180°)
+myServo.writeMicroseconds(us)       //Move using raw pulse width (e.g. 1000–2000µs) for finer control
+myServo.read()                      //Returns last written angle
+myServo.detach()                    //Releases the pin (stops PWM signal)
 ```
