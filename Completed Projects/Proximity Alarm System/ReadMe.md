@@ -1,65 +1,118 @@
-**General Objective:**
+# Ultrasonic Proximity Warning System
+### Arduino UNO R3 — Project Documentation
 
-Basically, combining an active buzzer, red, yellow, green LEDs, an ultra sonic sensor (USS) and an LCD1602 to create a small and compact proximity sensor that beeps depending on the proximity and displays it on the LCD and serial monitor. This is used in cars, cameras and many sensors to give the user visual and auditory information on how close they are to any other object. This program outputs the distance (cm used in the code) in the serial monitor and LCD display.
+---
 
+## General Overview
 
-Components:
-1. Arduino UNO R3
-2. LCD1602
-3. UltraSonic Sensor
-4. 10k Potentiometer
-5. 3 LEDs
-6. 3 Resistors
-7. Active Buzzer
-8. Breadboard
-9. An unholy amount of wires :)
+This project combines an ultrasonic sensor, active buzzer, three LEDs, and an LCD1602 display to create a compact proximity warning system. The system continuously measures the distance between the sensor and any object in front of it, displaying the result on both the LCD screen and the Serial Monitor. Depending on how close the object is, the system responds with visual (LED color) and auditory (buzzer) warnings.
 
+This type of system has real-world applications in reverse parking sensors in cars, camera autofocus systems, and industrial object detection.
 
+---
 
+## Components
 
+| # | Component | Quantity |
+|---|-----------|----------|
+| 1 | Arduino UNO R3 | 1 |
+| 2 | LCD1602 Display | 1 |
+| 3 | HC-SR04 Ultrasonic Sensor | 1 |
+| 4 | 10kΩ Potentiometer (LCD contrast) | 1 |
+| 5 | LEDs (Red, Yellow, Green) | 3 |
+| 6 | 220Ω Resistors (one per LED) | 3 |
+| 7 | Active Buzzer | 1 |
+| 8 | Breadboard | 1 |
+| 9 | Jumper Wires | Several |
 
-Wires and where they go:
-|   GND (Arduino)  | Negative (-) rail on breadboard |
-|------------------|---------------------------------|
-|   5V (Arduino)   | Positive (+) rail on breadboard |
-|------------------|---------------------------------|
-| Pin 13 (Arduino) | Green LED Power                 |
-|------------------|---------------------------------|
-| Pin 12 (Arduino) | Yellow LED Power                |
-|------------------|---------------------------------|
-| Pin 11 (Arduino) | Red LED Power                   |
-|------------------|---------------------------------|
-| Pin 10 (Arduino) | Echo pin (USS)                  |
-|------------------|---------------------------------|
-| Pin 9 (Arduino)  | Trigger Pin (USS)               |
-|------------------|---------------------------------|
-| Pin 8 (Arduino)  | Positive (+) Active Buzzer      |
-|------------------|---------------------------------|
-| Pin 7(Arduino)   | RS pin (LCD)                    |
-|------------------|---------------------------------|
-| Pin 6 (Arduino)  | E pin (LCD)                     |
-|------------------|---------------------------------|
-| Pin 5 (Arduino)  | D4 pin (LCD)                    |
-|------------------|---------------------------------|
-| Pin 4 (Arduino)  | D3 pin (LCD)                    |
-|------------------|---------------------------------|
-| Pin 3 (Arduino)  | D2 pin (LCD)                    |   
-|------------------|---------------------------------|
-| Pin 2 (Arduino)  | D1 pin (LCD)                    |  
-|------------------|---------------------------------|
+---
 
+## Wiring
 
-Warning System Logic:
-Green Light: Distance is greater than 30 cm, green LED on, active buzzer off
-Yellow Light: Distance is greater than 11 cm and less than 30, yellow LED on, active buzzer on incrementally
-Red Light: Distance is less than 11 cm, red LED on, active buzzer on constantly
+### Power Rails
+| Arduino | Breadboard |
+|---------|------------|
+| 5V | Positive (+) rail |
+| GND | Negative (−) rail |
 
+### LEDs
+> Each LED has a 220Ω resistor on its positive leg to limit current.
 
-Libraries Used:
-LiquidCrystal.h Library used for the LCD to function
+| Arduino Pin | Component |
+|-------------|-----------|
+| Pin 13 | Green LED (positive leg via 220Ω resistor) |
+| Pin 12 | Yellow LED (positive leg via 220Ω resistor) |
+| Pin 11 | Red LED (positive leg via 220Ω resistor) |
+| GND rail | All LED negative legs |
 
-Problems Encountered:
-1. efnrveivn
-2. vejnerv
-3. ekjnvkejrnve
-4. jervnkjernv
+### Ultrasonic Sensor (HC-SR04)
+| Arduino / Rail | HC-SR04 Pin |
+|----------------|-------------|
+| 5V rail | VCC |
+| GND rail | GND |
+| Pin 10 | Echo |
+| Pin 9 | Trig |
+
+### Active Buzzer
+| Arduino / Rail | Buzzer Pin |
+|----------------|------------|
+| Pin 8 | Positive (+) |
+| GND rail | Negative (−) |
+
+### LCD1602
+| Arduino / Rail | LCD Pin |
+|----------------|---------|
+| 5V rail | VCC (Pin 2) |
+| GND rail | GND (Pin 1) |
+| Potentiometer wiper | V0 — Contrast (Pin 3) |
+| Pin 7 | RS (Pin 4) |
+| GND rail | RW (Pin 5) — tied to GND for write mode |
+| Pin 6 | E — Enable (Pin 6) |
+| Pin 5 | D4 (Pin 11) |
+| Pin 4 | D5 (Pin 12) |
+| Pin 3 | D6 (Pin 13) |
+| Pin 2 | D7 (Pin 14) |
+| 5V via 220Ω resistor | Backlight Anode — A (Pin 15) |
+| GND rail | Backlight Cathode — K (Pin 16) |
+
+### Potentiometer (LCD Contrast)
+| Connection | Potentiometer Leg |
+|------------|-------------------|
+| 5V rail | Left outer leg |
+| GND rail | Right outer leg |
+| LCD V0 (Pin 3) | Middle wiper leg |
+
+---
+
+## Warning System Logic
+
+| Zone | Distance | LED | Buzzer |
+|------|----------|-----|--------|
+| 🟢 Safe | Greater than 30 cm | Green ON | OFF |
+| 🟡 Caution | 11 cm – 30 cm | Yellow ON | Periodic beeping |
+| 🔴 Danger | Less than or equal to 10 cm | Red ON | Constant beeping |
+
+The distance is also printed in real time to both the **Serial Monitor** and the **LCD display**.
+
+---
+
+## Libraries Used
+
+| Library | Purpose |
+|---------|---------|
+| `LiquidCrystal.h` | Controls the LCD1602 display. Built into Arduino IDE — no installation required. |
+
+> The HC-SR04 ultrasonic sensor does not require a library. It operates using built-in Arduino functions (`digitalWrite`, `pulseIn`, `delayMicroseconds`).
+
+---
+
+## Problems Encountered
+
+1. *(To be filled in)*
+2. *(To be filled in)*
+3. *(To be filled in)*
+4. *(To be filled in)*
+
+---
+
+*Documentation by Ahmad Awad*
