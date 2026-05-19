@@ -11,13 +11,22 @@ Each folder is named after a component and contains:
 > LEDs and potentiometers are skipped as they are too elementary.  
 > This repository will continue to be updated as I progress.
 
+## ✅ Completed Projects 💯
+
+| Component | Folder |
+|---|---|
+| Proximity Alarm System | [LCD](./LCD) |
+
 ---
+
 
 ## ✅ Documented Components
 
 | Component | Folder |
 |---|---|
 | LCD1602 (No I2C) | [LCD](./LCD) |
+|---|---|
+| Ultrasonic Sensor | [Supersonic Sensor](./SupersonicSensor) |
 
 ---
 
