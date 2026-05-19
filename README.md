@@ -13,9 +13,9 @@ Each folder is named after a component and contains:
 
 ## ✅ Completed Projects 💯
 
-| Component | Folder |
+| Project | Folder |
 |---|---|
-| Proximity Alarm System | [LCD](./LCD) |
+| Proximity Alarm System |[Proximity Alarm System](./Completed Projects/Proximity Alarm System) |
 
 ---
 
@@ -26,7 +26,8 @@ Each folder is named after a component and contains:
 |---|---|
 | LCD1602 (No I2C) | [LCD](./LCD) |
 |---|---|
-| Ultrasonic Sensor | [Supersonic Sensor](./SupersonicSensor) |
+| Ultrasonic Sensor |[Ultrasonic Sensor](./Supersonic Sensor)
+|
 
 ---
 
@@ -34,9 +35,11 @@ Each folder is named after a component and contains:
 
 | Component |
 |---|
-| Ultrasonic Sensor |
 | Servo Motor |
 | Stepper Motor |
 | Buttons |
 | Active Buzzer & Passive Buzzer |
 | 7-Segment Display (1 digit & 4 digit) |
+
+
+
