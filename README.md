@@ -24,7 +24,7 @@ Each folder is named after a component and contains:
 
 | Component | Folder |
 |---|---|
-| LCD1602 (No I2C) | LCD |
+| LCD1602 (No I2C) | [LCD1602](./Components/LCD) |
 |---|---|
 | Ultrasonic Sensor |Ultrasonic Sensor |
 |---|---|
