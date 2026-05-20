@@ -1,7 +1,7 @@
-# Arduino Uno — Component & Project Documentation
+# Arduino Uno R3 — Components & Project Documentation
 
 I'm learning how to use the Arduino Uno and various components.
-This repository is my personal documentation as I progress.
+This repository is my personal documentation as I progress and complete projects.
 
 Each folder is named after a component and contains:
 - A `README.md` explaining what the component does, how to wire it, and how to code it
