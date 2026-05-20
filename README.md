@@ -15,7 +15,7 @@ Each folder is named after a component and contains:
 
 | Project | Folder |
 |---|---|
-| Proximity Alarm System | Completed Projects --> Proximity Alarm System |
+| Proximity Alarm System | [Project 1: Proximity Alarm System](./CompletedProjects/ProximityAlarmSystem) |
 
 ---
 
