@@ -35,12 +35,18 @@ Each folder is named after a component and contains:
 
 ## 🔜 Coming Soon
 
+| Projects |
+|---|
+| Robotic Arm Mark 1.0 |
+| Arduino Based Pulse Oximeter |
+
 | Component |
 |---|
-| Stepper Motor |
-| Buttons |
-| Active Buzzer & Passive Buzzer |
 | 7-Segment Display (1 digit & 4 digit) |
+| MyoWare 2.0 Muscle Sensor |
+
+
+
 
 
 
