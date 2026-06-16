@@ -14,7 +14,7 @@ Mark 1.0 is intentionally kept simple. It is a breadboard-based proof of concept
 
 ---
 
-## ⚙️ How It Works
+## ⚙️ How It Work
 
 1. The **MyoWare 2.0 Muscle Sensor** is attached to the forearm using electrode pads
 2. When muscles contract, the sensor outputs an analog voltage signal
@@ -55,22 +55,7 @@ Mark 1.0 is intentionally kept simple. It is a breadboard-based proof of concept
 
 ---
 
-## 📁 Repository Structure
 
-```
-RoboHand-Mark1/
-├── README.md
-├── code/
-│   └── mark1_emg_servo.ino       # Main Arduino sketch
-├── wiring/
-│   └── wiring_diagram.png        # Breadboard wiring diagram
-├── cad/
-│   └── mark1_hand_rough.stl      # Onshape rough CAD model export
-└── docs/
-    └── components_list.md        # Full components list with notes
-```
-
----
 
 ## 🚀 Getting Started
 
