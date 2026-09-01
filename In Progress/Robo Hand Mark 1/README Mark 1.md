@@ -48,6 +48,8 @@ A single MyoWare sensor can't meaningfully isolate individual finger movement �
 | LEDs | Arduino digital pins directly | Not a shared rail — each LED + resistor wired straight to its own control pin |
  
 **Common ground is critical:** Arduino GND, battery negative, all three servo grounds, MyoWare GND, and LED cathodes all tie back to one shared ground. Without a common reference, the Arduino's analog read of the MyoWare signal is meaningless.
+
+> ⚠️ **Gotcha — laptop power interference:** since the Arduino stays connected to the computer, make sure the laptop is **not** plugged into the wall outlet while reading the sensor. Wall-outlet charging introduces interference that spikes the EMG reading to 1023 or 5V, even when your arm is relaxed. If the laptop must stay plugged in, use a USB isolator. (See `MyoWare Sensor.md` for the full wiring guide this note comes from.)
  
 ### Pin assignments
  
@@ -111,8 +113,8 @@ These are specific to individual arm/electrode placement — recalibrate via Ser
  
 - Mount electronics to the CAD hand model
 - Refine CAD model in Onshape (Extrude, Revolve, Sweep, Loft, Thicken)
-- Build a custom PCB to allow for a cleaner presentation 
-- Mark 2.0: cleaner build, possibly multi-channel EMG for more independent finger control
+- **Mark 2.0:** cleaner build, possibly multi-channel EMG for more independent finger control
+  - Build a custom PCB to allow for a cleaner presentation
   
 ---
  
@@ -122,3 +124,9 @@ These are specific to individual arm/electrode placement — recalibrate via Ser
 - **Firmware:** Arduino IDE, `Servo.h`
 - **Prototyping:** Breadboard, jumper wires, Tinkercad Circuits (wiring diagrams)
 - **Soldering:** KEPIOG 80W digital iron, Electrisol SN60/PB40 leaded solder, Spurtar silicone mat
+
+---
+
+## License
+
+This project is open source and available for personal and educational use.
