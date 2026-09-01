@@ -1,6 +1,6 @@
 # MyoWare 2.0 Muscle Sensor (EMG) - Direct Wiring Guide
 
-This guide covers how to interface the **MyoWare 2.0 Muscle Sensor** directly with an Arduino board using direct soldering, bypassing the ecosystem shield connectors (saves money).
+This guide covers how to interface the **MyoWare 2.0 Muscle Sensor** directly with an Arduino board using direct soldering, bypassing the ecosystem shield connectors (saves money $).
 
 ---
 
@@ -33,7 +33,8 @@ Although the MyoWare 2.0 sensor exposes 8 through-hole pins, a basic analog read
 ### Assembly Instructions
 1. **Prepare Wires:** Cut the **female** end off three jumper wires, strip roughly 3–5 mm of insulation, and twist/tin the exposed copper ends.
 2. **Solder Connections:** Solder the stripped wire ends to the **`VIN`**, **`GND`**, and **`ENV`** through-holes on the MyoWare board.
-3. **Connect to Microcontroller:** Insert the remaining **male** pins into your Arduino or breadboard:
+3. **Note on Power** Since the arduino will be connected to the computer, make sure the computer/laptop is NOT connected to the main outlet/wall outlet as it will result in interference that manifests as spkining the sensor to 1023 or 5V. If its a must to be plugged, use a USB isolater. 
+4. **Connect to Microcontroller:** Insert the remaining **male** pins into your Arduino or breadboard:
    - `VIN` ➔ `5V` (or `3.3V`)
    - `GND` ➔ `GND`
    - `ENV` ➔ `A0`
