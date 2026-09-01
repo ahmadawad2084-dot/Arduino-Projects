@@ -6,9 +6,11 @@ An EMG-controlled robotic hand prototype and proof of concept. A MyoWare 2.0 mus
  
 ---
  
-## Demo
+## MyoWare Sensor
+
+I had to solder wires to the GND, VIN, ENV ports in the sensor.
  
-*(Add a photo or short video of the hand moving here.)*
+![image alt](https://github.com/ahmadawad2084-dot/Arduino-Projects/blob/60268b83777da6c21611be512d4a83f258237377/In%20Progress/Robo%20Hand%20Mark%201/MyoWare%20Sensor.jpeg)
  
 ---
  
