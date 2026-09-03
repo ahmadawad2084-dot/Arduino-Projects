@@ -1,4 +1,4 @@
-# Arduino Uno R3 — Components & Project Documentation
+# Arduino Uno R3 — Project Documentation
 
 I'm learning how to use the Arduino Uno and various components.
 This repository is my personal documentation as I progress and complete projects.
@@ -29,7 +29,8 @@ Each folder is named after a component and contains:
 | Ultrasonic Sensor |[Ultrasonic Sensor](./Components/Ultrasonic-Sensor) |
 |---|---|
 | Servo Motor | [Servo Motor](./Components/Servo-Motor) |
-
+|---|---|
+| Robotic Arm Mark 1.0 |
 
 ---
 
@@ -37,13 +38,8 @@ Each folder is named after a component and contains:
 
 | Projects |
 |---|
-| Robotic Arm Mark 1.0 |
 | Arduino Based Pulse Oximeter |
 
-| Component |
-|---|
-| 7-Segment Display (1 digit & 4 digit) |
-| MyoWare 2.0 Muscle Sensor |
 
 
 
